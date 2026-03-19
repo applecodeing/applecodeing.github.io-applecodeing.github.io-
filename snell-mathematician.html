@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SNELL : 빛의 각도를 잰 수학자</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;700;900&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom Styles for Monotone Academic Theme */
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #ffffff;
+            color: #000000;
+            line-height: 1.7;
+        }
+        
+        h1, h2, h3, .serif, .math-text {
+            font-family: 'Noto Serif KR', serif;
+        }
+
+        /* Selection Color */
+        ::selection {
+            background-color: #000000;
+            color: #ffffff;
+        }
+
+        /* Smooth reveal animation classes */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px) scale(0.98);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        /* Formula Box */
+        .formula-box {
+            position: relative;
+            padding: 2rem;
+            border: 1px solid #000;
+            background: #fff;
+            text-align: center;
+            font-size: 1.25rem;
+            margin: 2rem 0;
+        }
+        .formula-box::before, .formula-box::after {
+            content: '';
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: #000;
+        }
+        .formula-box::before { top: -4px; left: -4px; }
+        .formula-box::after { bottom: -4px; right: -4px; }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; border-left: 1px solid #000; }
+        ::-webkit-scrollbar-thumb { background: #000; }
+    </style>
+</head>
+<body class="antialiased selection:bg-black selection:text-white">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full top-0 bg-white/90 backdrop-blur border-b border-black z-50">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+            <div class="font-bold tracking-widest text-xl serif">W. SNELLIUS</div>
+            <div class="hidden md:flex space-x-8 text-sm font-medium tracking-wide">
+                <a href="#ch1" class="hover:underline underline-offset-4">01. 관찰자</a>
+                <a href="#ch2" class="hover:underline underline-offset-4">02. 수학적 도구</a>
+                <a href="#ch3" class="hover:underline underline-offset-4">03. 원리 증명</a>
+                <a href="#ch4" class="hover:underline underline-offset-4">04. 현실 적용</a>
+                <a href="#ch5" class="hover:underline underline-offset-4">05. 성찰</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="min-h-screen flex flex-col justify-center items-center px-6 pt-20">
+        <div class="w-full max-w-5xl">
+            <p class="mb-4 tracking-[0.3em] text-sm md:text-base border-l-2 border-black pl-4 uppercase">
+                First Principles Thinking
+            </p>
+            <h1 class="text-5xl md:text-8xl font-black serif leading-tight mb-8">
+                빛의 각도를 잰<br>수학자.
+            </h1>
+            <div class="w-full h-px bg-black mb-8"></div>
+            <div class="flex flex-col md:flex-row justify-between gap-8 text-lg font-light leading-relaxed">
+                <p class="md:w-1/2">
+                    교과서에 나오는 '비율과 각도'가<br>
+                    실제 우주와 자연의 크기를 재는 잣대가 될 수 있음을 증명한 인물,<br>
+                    빌레브로르트 스넬리우스(1580~1626).
+                </p>
+                <p class="md:w-1/2">
+                    수학이 단순한 문제 풀이를 넘어 세상을 읽는 언어임을 보여주기 위해,<br>
+                    그의 사고 과정을 중학교 1학년도 이해할 수 있는 쉬운 시선으로 다시 따라가 봅니다.
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-5xl mx-auto px-6 pb-24">
+
+        <!-- CH 01 -->
+        <section id="ch1" class="reveal py-20 border-t border-black flex flex-col md:flex-row gap-12">
+            <div class="md:w-1/3">
+                <h2 class="text-6xl font-black serif">01.</h2>
+                <p class="mt-4 text-xl font-bold tracking-tight">관찰자, 스넬<br><span class="text-sm font-normal text-gray-500">Who & Why</span></p>
+            </div>
+            <div class="md:w-2/3 leading-loose">
+                <p class="mb-6 text-lg">
+                    물속에 잠긴 빨대가 꺾여 보이는 현상.<br>
+                    누구나 일상에서 쉽게 볼 수 있습니다.
+                </p>
+                <p class="mb-6 text-lg">
+                    하지만 네덜란드의 수학자 스넬리우스는 달랐습니다.<br>
+                    이 당연해 보이는 현상에 근본적인 '왜?'라는 의문을 품었습니다.
+                </p>
+                <p class="text-lg">
+                    그가 위대한 이유는 단순히 빛이 꺾인다는 사실을 안 것에 그치지 않았기 때문입니다.<br>
+                    그는 불규칙해 보이는 꺾임 속에서 <strong>'일정한 규칙'</strong>을 찾아내어,<br>
+                    누구나 예측할 수 있는 <strong>수학의 언어</strong>로 완벽하게 번역해 냈습니다.
+                </p>
+            </div>
+        </section>
+
+        <!-- CH 02 -->
+        <section id="ch2" class="reveal py-20 border-t border-black flex flex-col md:flex-row gap-12">
+            <div class="md:w-1/3">
+                <h2 class="text-6xl font-black serif">02.</h2>
+                <p class="mt-4 text-xl font-bold tracking-tight">스넬의 자(Ruler)<br><span class="text-sm font-normal text-gray-500">각도와 비율</span></p>
+            </div>
+            <div class="md:w-2/3 leading-loose">
+                <h3 class="text-2xl font-bold serif mb-6">직접 잴 수 없다면 각도를 이용하라</h3>
+                <p class="mb-6 text-lg">
+                    우리는 너무 멀어서 직접 길이를 잴 수 없을 때,<br>
+                    도형의 각도와 '비율'을 이용해 거리를 알아낼 수 있습니다.
+                </p>
+                <p class="text-lg">
+                    스넬은 이 수학적 원리를 아주 크게 확장했습니다.<br>
+                    가상의 거대한 삼각형을 상상하고 각도를 재어,<br>
+                    네덜란드 도시 사이의 거리는 물론 지구 전체의 크기까지 계산해 냈습니다.<br>
+                    각도와 비율이 세상을 재는 거대한 자(Ruler)가 된 것입니다.
+                </p>
+            </div>
+        </section>
+
+        <!-- CH 03 -->
+        <section id="ch3" class="reveal py-20 border-t border-black flex flex-col md:flex-row gap-12">
+            <div class="md:w-1/3">
+                <h2 class="text-6xl font-black serif">03.</h2>
+                <p class="mt-4 text-xl font-bold tracking-tight">원리의 증명<br><span class="text-sm font-normal text-gray-500">빛의 궤적에서 규칙을 찾다</span></p>
+            </div>
+            <div class="md:w-2/3 leading-loose">
+                <h3 class="text-2xl font-bold serif mb-6">물속에서 꺾인 빛의 비밀</h3>
+                <p class="mb-6 text-lg">
+                    빛이 공기에서 물로 들어갈 때 꺾이는 각도를 직접 재어 봅니다.<br>
+                    스넬은 '들어오는 각도'와 '꺾이는 각도'를 꼼꼼히 비교하면서<br>
+                    놀라운 수학적 비밀을 발견합니다.
+                </p>
+                
+                <!-- Custom SVG Diagram (Simplified for 7th Grade) -->
+                <div class="w-full border border-black p-8 my-8 bg-gray-50 relative">
+                    <p class="absolute top-4 left-4 text-xs tracking-widest uppercase">[ 굴절 모델링 ]</p>
+                    <svg viewBox="0 0 400 300" class="w-full max-w-sm mx-auto" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Medium 1 -->
+                        <rect x="0" y="0" width="400" height="150" fill="#ffffff"/>
+                        <!-- Medium 2 -->
+                        <rect x="0" y="150" width="400" height="150" fill="#f0f0f0"/>
+                        
+                        <!-- Interface Line -->
+                        <line x1="0" y1="150" x2="400" y2="150" stroke="#000" stroke-width="2"/>
+                        <!-- Normal Line -->
+                        <line x1="200" y1="20" x2="200" y2="280" stroke="#000" stroke-dasharray="6,6" stroke-width="1.5"/>
+                        
+                        <!-- Incident Ray -->
+                        <line x1="80" y1="30" x2="200" y2="150" stroke="#000" stroke-width="3"/>
+                        <!-- Refracted Ray -->
+                        <line x1="200" y1="150" x2="280" y2="280" stroke="#000" stroke-width="3"/>
+                        
+                        <!-- Angles Arc -->
+                        <path d="M 185 135 A 20 20 0 0 1 200 130" fill="none" stroke="#000" stroke-width="2"/>
+                        <path d="M 200 170 A 20 20 0 0 1 210 165" fill="none" stroke="#000" stroke-width="2"/>
+
+                        <!-- Labels -->
+                        <text x="10" y="140" font-family="serif" font-size="14">공기</text>
+                        <text x="10" y="170" font-family="serif" font-size="14">물</text>
+                        
+                        <text x="90" y="20" font-family="serif" font-size="14" fill="#666">들어오는 빛 (입사각)</text>
+                        <text x="270" y="295" font-family="serif" font-size="14" fill="#666">꺾이는 빛 (굴절각)</text>
+                    </svg>
+                </div>
+
+                <p class="mb-6 text-lg">
+                    스넬의 위대한 발견은 바로 이것입니다.<br>
+                    <strong>"빛을 어떤 각도로 쏘든, 들어오는 빛과 꺾인 빛 사이에는 항상 일정한 비율이 존재한다."</strong>
+                </p>
+                
+                <div class="formula-box">
+                    <span class="math-text italic font-bold text-lg">들어오는 빛과 꺾이는 빛의 비율 = 항상 일정함</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- CH 04 -->
+        <section id="ch4" class="reveal py-20 border-t border-black flex flex-col md:flex-row gap-12">
+            <div class="md:w-1/3">
+                <h2 class="text-6xl font-black serif">04.</h2>
+                <p class="mt-4 text-xl font-bold tracking-tight">공식이 현실이 될 때<br><span class="text-sm font-normal text-gray-500">실생활 적용</span></p>
+            </div>
+            <div class="md:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-8 leading-loose">
+                <div>
+                    <h4 class="font-bold border-b border-black pb-2 mb-4 serif text-xl">04-1. 시력의 통제 (렌즈)</h4>
+                    <p class="mb-4">
+                        빛이 안경알(유리)을 통과할 때 얼마나 꺾일지 수학으로 정확히 계산해 냅니다.
+                    </p>
+                    <p>
+                        이 계산 덕분에 빛이 눈의 망막에 정확히 맺히도록 유리의 두께와 각도를 깎을 수 있습니다.<br>
+                        현미경과 우주를 보는 망원경 역시 이 법칙 덕분에 만들어졌습니다.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-bold border-b border-black pb-2 mb-4 serif text-xl">04-2. 빛을 가두는 길 (광통신)</h4>
+                    <p class="mb-4">
+                        유리에 빛을 쏘는 각도를 치밀하게 조절하면,<br>
+                        빛이 유리 밖으로 빠져나가지 않고 거울처럼 튕기며 나아갑니다.
+                    </p>
+                    <p>
+                        이것을 '전반사'라고 부르는데,<br>
+                        이 원리가 바로 전 세계를 하나로 연결하는 초고속 인터넷 광랜(광섬유)의 핵심 기술입니다.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CH 05 -->
+        <section id="ch5" class="reveal py-20 border-y border-black flex flex-col md:flex-row gap-12">
+            <div class="md:w-1/3">
+                <h2 class="text-6xl font-black serif">05.</h2>
+                <p class="mt-4 text-xl font-bold tracking-tight">탐구자의 시선<br><span class="text-sm font-normal text-gray-500">자신의 다짐 및 성찰</span></p>
+            </div>
+            <div class="md:w-2/3 leading-loose">
+                <div class="bg-black text-white p-8 mb-8">
+                    <h3 class="text-xl font-bold mb-6 flex items-center gap-3">
+                        <span class="w-2 h-2 bg-white rounded-full"></span>
+                        탐구하는 사람 (Inquirers)
+                    </h3>
+                    <p class="font-light mb-4">
+                        물속에 담긴 막대기가 꺾여 보이는 것은 누구나 아는 사실입니다.
+                    </p>
+                    <p class="font-light">
+                        하지만 스넬처럼 일상의 당연함 속에 숨겨진 규칙을 찾기 위해 '왜?'라는 질문을 멈추지 않는 학습자가 되겠습니다.<br>
+                        수학은 교과서 안에 머무는 기호가 아니라 세상을 관찰하는 안경이라는 것을 깨달았습니다.
+                    </p>
+                </div>
+                
+                <div class="border border-black p-8">
+                    <h3 class="text-xl font-bold mb-6 flex items-center gap-3">
+                        <span class="w-2 h-2 bg-black rounded-full"></span>
+                        사고하는 사람 (Thinkers)
+                    </h3>
+                    <p class="font-light mb-4">
+                        빛이라는 물리학적 현상을 설명하기 위해, 중학교 수준의 '비율과 각도'라는 수학적 도구를 끌어온 스넬의 통찰력을 배웠습니다.
+                    </p>
+                    <p class="font-light">
+                        앞으로 복잡한 문제를 만났을 때, 단편적인 암기에 그치지 않고 내가 가진 지식과 원리를 융합하여 창의적인 해결책을 도출해 내겠습니다.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white text-center py-8">
+        <p class="serif tracking-widest text-sm opacity-50">THE MATHEMATICS OF REFRACTION © SNELL PROJECT</p>
+    </footer>
+
+    <!-- Scroll Animation Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const reveals = document.querySelectorAll('.reveal');
+            
+            const revealOnScroll = () => {
+                const windowHeight = window.innerHeight;
+                const elementVisible = 100;
+
+                reveals.forEach((reveal) => {
+                    const elementTop = reveal.getBoundingClientRect().top;
+                    const elementBottom = reveal.getBoundingClientRect().bottom;
+
+                    // 요소가 화면 안으로 들어왔을 때 active 추가 (위/아래 스크롤 모두 대응)
+                    if (elementTop < windowHeight - elementVisible && elementBottom > 0) {
+                        reveal.classList.add('active');
+                    } else {
+                        // 화면에서 벗어나면 active 제거하여 다시 도달했을 때 애니메이션 재실행
+                        reveal.classList.remove('active');
+                    }
+                });
+            };
+
+            // Initial check
+            revealOnScroll();
+            // Check on scroll
+            window.addEventListener('scroll', revealOnScroll);
+        });
+    </script>
+</body>
+</html>
